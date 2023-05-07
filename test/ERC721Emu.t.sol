@@ -16,6 +16,7 @@ contract ERC721EmuT is Test {
         erc721emu = new ERC721Emu(name, symbol);
     }
 
+    //mint the 10 token to observe gas used
     function testMintEnumerable() public {
         vm.startPrank(owner);
         for(uint i =0; i< 10;) {
@@ -30,6 +31,7 @@ contract ERC721EmuT is Test {
 
     }
 
+    //approve user1 to control the token from owner
     function testApproveEnumerable() public {
         vm.startPrank(owner);
         erc721emu.mint(0);
@@ -38,6 +40,7 @@ contract ERC721EmuT is Test {
         assertEq(erc721emu.getApproved(0), user1);
     }
 
+   //transfer the token from owner to user1 and check the balaceOf user1
     function testTransferEnumerable() public {
         vm.startPrank(owner);
         erc721emu.mint(0);
@@ -46,6 +49,7 @@ contract ERC721EmuT is Test {
         assertEq(erc721emu.ownerOf(0), user1);
     }
 
+    //setApproveAll for user1
     function testSetApproveForAllEnumerable() public {
         vm.startPrank(owner);
         for(uint i =0; i< 10;) {

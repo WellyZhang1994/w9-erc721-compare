@@ -18,6 +18,7 @@ contract ERC721aT is Test {
         vm.stopPrank();
     }
 
+    //mint 10 token for owner to observe the gas used
     function testMint721a() public {
         vm.startPrank(owner);
         erc721a.mint(10);
@@ -26,6 +27,7 @@ contract ERC721aT is Test {
         assertEq(ownerCount, 10);
     }
 
+    //approve the token from owner to user1
     function testApprove721a() public {
         vm.startPrank(owner);
         erc721a.mint(1);
@@ -38,6 +40,7 @@ contract ERC721aT is Test {
         assertEq(erc721a.getApproved(0), user1);
     }
 
+   //transfer the token from owner to user1 and check the balaceOf user1
     function testTransfer721a() public {
         vm.startPrank(owner);
         erc721a.mint(1);
@@ -48,6 +51,7 @@ contract ERC721aT is Test {
         vm.stopPrank();
     }
 
+    //setApproveAll for user1
     function testSetApproveForAll721a() public {
         vm.startPrank(owner);
         erc721a.mint(10);
